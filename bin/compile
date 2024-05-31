@@ -1,3 +1,4 @@
-git clone https://github.com/snowflakedb/pdo_snowflake.git
+export PHP_HOME=/app/.heroku/php
+git clone https://github.com/snowflakedb/pdo_snowflake.git --depth=1
 cd pdo_snowflake
 ./scripts/build_pdo_snowflake.sh
