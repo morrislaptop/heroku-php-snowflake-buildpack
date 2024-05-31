@@ -1,5 +1,6 @@
 {
     "name": "morrislaptop/heroku-php-snowflake-buildpack",
+    "version": "0.0.0",
     "type": "library",
     "authors": [
         {
