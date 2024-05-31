@@ -7,4 +7,4 @@ cp modules/pdo_snowflake.so /app/.heroku/php/lib/php/extensions/no-debug-non-zts
 echo "extension=pdo_snowflake.so" >> /app/.heroku/php/etc/php/php.ini
 
 wget -P /app/.heroku/php/etc/php https://github.com/snowflakedb/pdo_snowflake/raw/master/libsnowflakeclient/cacert.pem
-echo "pdo_snowflake.cacert=/app/.heroku/php/etc/php/cacert.pem
+echo "pdo_snowflake.cacert=/app/.heroku/php/etc/php/cacert.pem" >> /app/.heroku/php/etc/php/php.ini
