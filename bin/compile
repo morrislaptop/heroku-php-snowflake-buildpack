@@ -13,10 +13,10 @@ if [ ! -f $cache/pdo_snowflake_$php.so ]; then
     git clone https://github.com/snowflakedb/pdo_snowflake.git --depth=1
     cd pdo_snowflake
     ./scripts/build_pdo_snowflake.sh
-    cp modules/pdo_snowflake/pdo_snowflake.so $cache/pdo_snowflake_$php.so
+    cp modules/pdo_snowflake.so $cache/pdo_snowflake_$php.so
 fi
 
-# Install Extesnsion
+# Install Extension
 cp $cache/pdo_snowflake_$php.so $(php-config --extension-dir)
 echo "extension=pdo_snowflake.so" >> /app/.heroku/php/etc/php/php.ini
 
