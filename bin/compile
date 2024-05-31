@@ -3,7 +3,7 @@ git clone https://github.com/snowflakedb/pdo_snowflake.git --depth=1
 cd pdo_snowflake
 ./scripts/build_pdo_snowflake.sh
 
-cp modules/pdo_snowflake.so /app/.heroku/php/lib/php/extensions/no-debug-non-zts-20220829
+cp modules/pdo_snowflake.so /app/.heroku/php/lib/php/extensions/no-debug-non-zts-20230831
 echo "extension=pdo_snowflake.so" >> /app/.heroku/php/etc/php/php.ini
 
 wget -P /app/.heroku/php/etc/php https://github.com/snowflakedb/pdo_snowflake/raw/master/libsnowflakeclient/cacert.pem
