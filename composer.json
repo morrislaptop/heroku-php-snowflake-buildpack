@@ -1,0 +1,11 @@
+{
+    "name": "morrislaptop/heroku-php-snowflake-buildpack",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Craig Morris",
+            "email": "craig.michael.morris@gmail.com"
+        }
+    ],
+    "require": {}
+}
