@@ -17,7 +17,7 @@ if [ ! -f $cache/pdo_snowflake_$php.so ]; then
 fi
 
 # Install Extension
-cp $cache/pdo_snowflake_$php.so $(php-config --extension-dir)
+cp $cache/pdo_snowflake_$php.so $(php-config --extension-dir)/pdo_snowflake.so
 echo "extension=pdo_snowflake.so" >> /app/.heroku/php/etc/php/php.ini
 
 # Download Cert
