@@ -1,0 +1,3 @@
+git clone https://github.com/snowflakedb/pdo_snowflake.git
+cd pdo_snowflake
+./scripts/build_pdo_snowflake.sh
