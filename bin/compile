@@ -1,10 +1,28 @@
-export PHP_HOME=/app/.heroku/php
-git clone https://github.com/snowflakedb/pdo_snowflake.git --depth=1
-cd pdo_snowflake
-./scripts/build_pdo_snowflake.sh
+set -eo pipefail
 
-cp modules/pdo_snowflake.so $(php-config --extension-dir)
+# Vars
+mkdir -p "$1" "$2"
+php=$(php -r 'echo PHP_VERSION;')
+cache=$(cd "$2/" && pwd)
+
+# Download & Compile Extension
+if test -d $cache/pdo_snowflake_$php.so then
+    export PHP_HOME=/app/.heroku/php
+    git clone https://github.com/snowflakedb/pdo_snowflake.git --depth=1
+    cd pdo_snowflake
+    ./scripts/build_pdo_snowflake.sh
+    cp modules/pdo_snowflake/pdo_snowflake.so $cache/pdo_snowflake_$php.so
+fi
+
+# Install Extesnsion
+cp $cache/pdo_snowflake_$php.so $(php-config --extension-dir)
 echo "extension=pdo_snowflake.so" >> /app/.heroku/php/etc/php/php.ini
 
-wget -P /app/.heroku/php/etc/php https://github.com/snowflakedb/pdo_snowflake/raw/master/libsnowflakeclient/cacert.pem
+# Download Cert
+if test -d $cache/cacert.pem then
+    wget -P $cache https://github.com/snowflakedb/pdo_snowflake/raw/master/libsnowflakeclient/cacert.pem
+fi
+
+# Install Cert
+cp $cache/cacert.pem /app/.heroku/php/etc/php/cacert.pem
 echo "pdo_snowflake.cacert=/app/.heroku/php/etc/php/cacert.pem" >> /app/.heroku/php/etc/php/php.ini
