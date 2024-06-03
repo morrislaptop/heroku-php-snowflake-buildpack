@@ -36,3 +36,5 @@ since `phpize` is required to build the extension.
   $dbh = null;
   echo "OK\n";
 ```
+
+For ODBC access, please see https://github.com/Popmenu/heroku-buildpack-snowflake-odbc
