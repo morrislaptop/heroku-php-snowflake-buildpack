@@ -7,5 +7,5 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: ./bin/detect
-    - run: ./bin/compile $PWD
+    - run: ./bin/compile $PWD $PWD
     - run: ./bin/release
